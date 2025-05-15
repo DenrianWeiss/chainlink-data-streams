@@ -1,0 +1,41 @@
+{
+  "name": "chainlink-data-streams",
+  "version": "1.0.0",
+  "description": "ChainLink DataStream SDK Unofficial Typescript client",
+  "main": "index.ts",
+  "scripts": {
+    "test": "mocha --loader ts-node/esm tests/**/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenrianWeiss/chainlink-data-streams.git"
+  },
+  "keywords": [
+    "chainlink"
+  ],
+  "author": "DenrianWeiss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DenrianWeiss/chainlink-data-streams/issues"
+  },
+  "homepage": "https://github.com/DenrianWeiss/chainlink-data-streams#readme",
+  "devDependencies": {
+    "@types/chai": "^5.2.2",
+    "@types/mocha": "^10.0.10",
+    "chai": "^5.2.0",
+    "mocha": "^11.2.2",
+    "nyc": "^17.1.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "ethers": "^5.8.0",
+    "tsx": "^4.19.4"
+  },
+  "type": "module",
+  "mocha": {
+    "node-option": [
+      "import=tsx"
+    ]
+  }
+}
