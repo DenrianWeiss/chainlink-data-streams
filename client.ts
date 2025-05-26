@@ -184,7 +184,7 @@ async function req(client: Client, method: string, path: string, params?: { [key
     // Generate header
     /// Time: from current unix milli
     const timestamp = Date.now();
-    const headers = generateAuthHeaders(method, path, client.config.ApiKey, client.config.ApiSecret, timestamp, body);
+    const headers = generateAuthHeaders(method, reqUrl.pathname + reqUrl.search, client.config.ApiKey, client.config.ApiSecret, timestamp, body);
     // Add headers to the request
     Object.keys(headers).forEach(key => {
         httpReq.headers.append(key, headers[key]);
