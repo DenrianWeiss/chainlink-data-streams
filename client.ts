@@ -89,7 +89,7 @@ export class Client {
         const resp = await req(this, "GET", APIEndPoints.v1feeds);
         if (resp?.feeds) {
             return resp.feeds.map((feed: any) => {
-                return new Feed(new ID(feed?.feedID));
+                return new Feed(ID.fromString(feed?.feedID));
             });
         }
         throw new Error("Invalid response from server");
@@ -102,7 +102,7 @@ export class Client {
             const report = resp.report;
             if (report?.feedID && report?.fullReport && report?.validFromTimestamp && report?.observationsTimestamp) {
                 return {
-                    feedID: new ID(report.feedID),
+                    feedID: ID.fromString(report.feedID),
                     fullReport: report.fullReport.startsWith("0x") ?
                         new Uint8Array(report.fullReport.slice(2).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16))) :
                         new Uint8Array(report.fullReport.match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16))),
@@ -120,7 +120,7 @@ export class Client {
         if (resp?.reports) {
             return resp.reports.map((report: any) => {
                 return {
-                    feedID: new ID(report.feedID),
+                    feedID: ID.fromString(report.feedID),
                     fullReport: // Decode hex from the report.fullReport without the 0x prefix
                         report.fullReport.startsWith("0x") ?
                             new Uint8Array(report.fullReport.slice(2).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16))) :
@@ -139,7 +139,7 @@ export class Client {
             let r: ReportPage = {
                 Reports: resp.reports.map((report: any) => {
                     return {
-                        feedID: new ID(report.feedID),
+                        feedID: ID.fromString(report.feedID),
                         fullReport: // Decode hex from the report.fullReport without the 0x prefix
                             report.fullReport.startsWith("0x") ?
                                 new Uint8Array(report.fullReport.slice(2).match(/.{1,2}/g)!.map((byte: any) => parseInt(byte, 16))) :

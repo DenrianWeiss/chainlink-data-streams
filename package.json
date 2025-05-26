@@ -1,6 +1,6 @@
 {
   "name": "@nekogawa/chainlink-data-streams",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ChainLink DataStream SDK Unofficial Typescript client",
   "main": "index.ts",
   "scripts": {
